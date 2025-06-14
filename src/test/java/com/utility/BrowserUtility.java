@@ -4,10 +4,18 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class BrowserUtility {
+public abstract class BrowserUtility {
     private WebDriver driver;
 
     public BrowserUtility(WebDriver driver) {
+        this.driver = driver;
+    }
+
+    public WebDriver getDriver() {
+        return driver;
+    }
+
+    public void setDriver(WebDriver driver) {
         this.driver = driver;
     }
 
@@ -27,5 +35,10 @@ public class BrowserUtility {
     public void enterText(By locator, String textToEnter) {
         WebElement emailTextBoxWebElement = driver.findElement(locator);
         emailTextBoxWebElement.sendKeys(textToEnter);
+    }
+
+    public String getVisibleText(By locator){
+        WebElement element = driver.findElement(locator);
+        return element.getText();
     }
 }
