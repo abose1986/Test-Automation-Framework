@@ -4,7 +4,7 @@ import com.utility.BrowserUtility;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class LoginPage extends BrowserUtility {
+public final class LoginPage extends BrowserUtility {
 
     private final static By EMAIL_TEXT_BOX_LOCATOR = By.id("email");
     private final static By PASSWORD_TEXT_BOX_LOCATOR = By.id("passwd");
