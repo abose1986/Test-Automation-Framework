@@ -4,6 +4,8 @@ import static com.constants.Browser.*;
 
 import com.ui.pages.HomePage;
 import static org.testng.Assert.*;
+
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -29,5 +31,11 @@ public class LoginTest {
         assertEquals(homePage.goToLoginInPage()
                 .doLoginWith("payeba8662@baxima.com", "password")
                 .getUserName(),"Ricky Ponting");
+    }
+
+    @AfterMethod
+    public void tearDown(){
+        if (homePage.getDriver() != null)
+            homePage.getDriver().quit();
     }
 }
