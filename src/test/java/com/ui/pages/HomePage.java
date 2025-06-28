@@ -1,12 +1,12 @@
 package com.ui.pages;
 
 import com.constants.Browser;
+import com.utility.JSONUtility;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import com.utility.BrowserUtility;
 
 import static com.constants.Env.*;
-import static com.utility.PropertiesUtil.*;
 
 
 public final class HomePage extends BrowserUtility {
@@ -15,7 +15,8 @@ public final class HomePage extends BrowserUtility {
 
     public HomePage(Browser browserName) {
         super(browserName);
-        goToWebsite(readProperties(QA, "URL"));
+        //goToWebsite(readProperties(QA, "URL"));
+        goToWebsite(JSONUtility.readJson(QA));
         maximizeWindow();
     }
 
@@ -25,7 +26,6 @@ public final class HomePage extends BrowserUtility {
 
     public LoginPage goToLoginInPage() {
         clickOn(SIGN_IN_LINK_LOCATOR);
-        LoginPage loginPage = new LoginPage(getDriver());
-        return loginPage;
+        return new LoginPage(getDriver());
     }
 }

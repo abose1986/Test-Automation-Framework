@@ -1,5 +1,5 @@
 package com.constants;
 
 public enum Env {
-    DEV,QA,PROD
+    DEV,QA,UAT,STAGE,PROD
 }
