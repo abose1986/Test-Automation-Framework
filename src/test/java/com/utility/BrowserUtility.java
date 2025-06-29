@@ -55,4 +55,5 @@ public abstract class BrowserUtility {
         WebElement element = driver.findElement(locator);
         return element.getText();
     }
+
 }

@@ -1,17 +1,23 @@
 package com.ui.pages;
 
 import com.constants.Browser;
-import com.utility.BrowserUtility;
+import com.utility.JSONUtility;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import com.utility.BrowserUtility;
+
+import static com.constants.Env.*;
+
 
 public final class HomePage extends BrowserUtility {
 
     private final static By SIGN_IN_LINK_LOCATOR = By.className("login");
 
-    public HomePage(Browser browserName){
+    public HomePage(Browser browserName) {
         super(browserName);
-        goToWebsite("http://www.automationpractice.pl/index.php");
+        //goToWebsite(readProperties(QA, "URL"));
+        goToWebsite(JSONUtility.readJson(QA));
+        maximizeWindow();
     }
 
     public HomePage(WebDriver driver) {
@@ -20,7 +26,6 @@ public final class HomePage extends BrowserUtility {
 
     public LoginPage goToLoginInPage() {
         clickOn(SIGN_IN_LINK_LOCATOR);
-        LoginPage loginPage = new LoginPage(getDriver());
-        return loginPage;
+        return new LoginPage(getDriver());
     }
 }
