@@ -2,9 +2,11 @@ package com.ui.test;
 
 import static com.constants.Browser.*;
 
+import com.ui.dataproviders.LoginDataProvider;
 import com.ui.pages.HomePage;
 import static org.testng.Assert.*;
 
+import com.ui.pojo.User;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -26,10 +28,11 @@ public class LoginTest {
         3. Reduce the use of local variables
         4. You should have at least one assertion
      */
-    @Test(description = "Verifies if the valid user is able to login into the application", groups = {"e2e", "sanity"})
-    public void loginTest() {
+    @Test(description = "Verifies if the valid user is able to login into the application", groups = {"e2e", "sanity"},
+    dataProviderClass = com.ui.dataproviders.LoginDataProvider.class, dataProvider = "LoginTestDataProvider")
+    public void loginTest(User user) {
         assertEquals(homePage.goToLoginInPage()
-                .doLoginWith("payeba8662@baxima.com", "password")
+                .doLoginWith(user.getEmailAddress(), user.getPassword())
                 .getUserName(),"Ricky Ponting");
     }
 
