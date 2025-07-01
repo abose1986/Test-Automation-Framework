@@ -9,7 +9,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 
 public class JSONUtility {
-    public static String readJson(Env env) {
+    public static Environment readJson(Env env) {
         Gson gson = new Gson();
         File jsonFile = new File(System.getProperty("user.dir") + "\\config\\config.json");
         FileReader fileReader;
@@ -19,7 +19,6 @@ public class JSONUtility {
             throw new RuntimeException(e);
         }
         Config config = gson.fromJson(fileReader, Config.class);
-        Environment environment = config.getEnvironments().get(env.name());
-        return environment.getUrl();
+        return config.getEnvironments().get(env.toString());
     }
 }
