@@ -16,7 +16,7 @@ public final class HomePage extends BrowserUtility {
     public HomePage(Browser browserName) {
         super(browserName);
         //goToWebsite(readProperties(QA, "URL"));
-        goToWebsite(JSONUtility.readJson(QA));
+        goToWebsite(JSONUtility.readJson(QA).getUrl());
         maximizeWindow();
     }
 
