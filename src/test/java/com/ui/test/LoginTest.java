@@ -7,6 +7,8 @@ import com.ui.pages.HomePage;
 import static org.testng.Assert.*;
 
 import com.ui.pojo.User;
+import com.utility.LoggerUtility;
+import org.apache.logging.log4j.Logger;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -14,6 +16,7 @@ import org.testng.annotations.Test;
 public class LoginTest {
 
     HomePage homePage;
+    Logger logger;
 
     @BeforeMethod(description = "Load the Homepage of the website")
     public void setUp() {
@@ -48,9 +51,12 @@ public class LoginTest {
             dataProviderClass = com.ui.dataproviders.LoginDataProvider.class, dataProvider = "LoginTestExcelDataProvider",
     retryAnalyzer = com.ui.listeners.MyRetryAnalyzer.class)
     public void loginExcelTest(User user) {
+        logger = LoggerUtility.getLogger(this.getClass());
+        logger.info("Started Login excel test.");
         assertEquals(homePage.goToLoginInPage()
                 .doLoginWith(user.getEmailAddress(), user.getPassword())
                 .getUserName(), "Ricky Ponting");
+        logger.info("Login excel test completed.");
     }
 
     @AfterMethod
