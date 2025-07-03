@@ -11,15 +11,18 @@ import com.utility.LoggerUtility;
 import org.apache.logging.log4j.Logger;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+@Listeners(com.ui.listeners.TestListener.class)
 public class LoginTest {
 
     HomePage homePage;
-    Logger logger;
+    Logger logger = LoggerUtility.getLogger(this.getClass());
 
     @BeforeMethod(description = "Load the Homepage of the website")
     public void setUp() {
+        logger.info("Loads the Home page of the website");
         homePage = new HomePage(EDGE);
     }
 
@@ -49,14 +52,12 @@ public class LoginTest {
 
     @Test(description = "Verifies if the valid user is able to login into the application", groups = {"e2e", "sanity"},
             dataProviderClass = com.ui.dataproviders.LoginDataProvider.class, dataProvider = "LoginTestExcelDataProvider",
-    retryAnalyzer = com.ui.listeners.MyRetryAnalyzer.class)
+            retryAnalyzer = com.ui.listeners.MyRetryAnalyzer.class)
     public void loginExcelTest(User user) {
-        logger = LoggerUtility.getLogger(this.getClass());
-        logger.info("Started Login excel test.");
+
         assertEquals(homePage.goToLoginInPage()
                 .doLoginWith(user.getEmailAddress(), user.getPassword())
                 .getUserName(), "Ricky Ponting");
-        logger.info("Login excel test completed.");
     }
 
     @AfterMethod
