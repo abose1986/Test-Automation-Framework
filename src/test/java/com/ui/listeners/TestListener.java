@@ -26,20 +26,20 @@ public class TestListener implements ITestListener {
     @Override
     public void onTestSuccess(ITestResult result) {
         logger.info("{} PASSED", result.getMethod().getMethodName());
-        getExtent().log(Status.PASS, result.getMethod().getMethodName());
+        getExtentTest().log(Status.PASS, result.getMethod().getMethodName());
     }
 
     @Override
     public void onTestFailure(ITestResult result) {
         logger.error("{} FAILED", result.getMethod().getMethodName());
         logger.error(result.getThrowable().getMessage());
-        getExtent().log(Status.FAIL, result.getMethod().getMethodName());
+        getExtentTest().log(Status.FAIL, result.getMethod().getMethodName());
     }
 
     @Override
     public void onTestSkipped(ITestResult result) {
         logger.warn("{} SKIPPED", result.getMethod().getMethodName());
-        getExtent().log(Status.SKIP, result.getMethod().getMethodName());
+        getExtentTest().log(Status.SKIP, result.getMethod().getMethodName());
     }
 
     @Override

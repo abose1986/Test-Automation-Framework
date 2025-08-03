@@ -10,26 +10,12 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public abstract class BrowserUtility {
+
     private WebDriver driver;
     Logger logger = LoggerUtility.getLogger(this.getClass());
 
     public BrowserUtility(WebDriver driver) {
         this.driver = driver;
-    }
-
-    public BrowserUtility(Browser browserName) {
-        logger.info("Launching browser for {}", browserName);
-        if (browserName == Browser.CHROME) {
-
-            driver = new ChromeDriver();
-        } else if (browserName == Browser.FIREFOX) {
-            driver = new FirefoxDriver();
-        } else if (browserName == Browser.EDGE) {
-            driver = new EdgeDriver();
-        }else{
-            logger.error("Invalid Browser Name...Please select Chrome, Edge or Firefox only");
-            System.err.print("Invalid Browser Name...Please select Chrome, Edge or Firefox only");
-        }
     }
 
     public WebDriver getDriver() {
@@ -38,6 +24,21 @@ public abstract class BrowserUtility {
 
     public void setDriver(WebDriver driver) {
         this.driver = driver;
+    }
+
+
+    public BrowserUtility(Browser browserName) {
+        logger.info("Launching browser for {}", browserName);
+        if (browserName == Browser.CHROME) {
+            driver = new ChromeDriver();
+        } else if (browserName == Browser.FIREFOX) {
+            driver = new FirefoxDriver();
+        } else if (browserName == Browser.EDGE) {
+            driver = new EdgeDriver();
+        } else {
+            logger.error("Invalid Browser Name...Please select Chrome, Edge or Firefox only");
+            System.err.print("Invalid Browser Name...Please select Chrome, Edge or Firefox only");
+        }
     }
 
     public void goToWebsite(String url) {
