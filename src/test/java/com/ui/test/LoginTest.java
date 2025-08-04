@@ -1,29 +1,14 @@
 package com.ui.test;
 
-import static com.constants.Browser.EDGE;
-
-import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-import com.ui.pages.HomePage;
 import com.ui.pojo.User;
-import com.utility.LoggerUtility;
 
 @Listeners(com.ui.listeners.TestListener.class)
-public class LoginTest {
-
-    HomePage homePage;
-    Logger logger = LoggerUtility.getLogger(this.getClass());
-
-    @BeforeMethod(description = "Load the Homepage of the website")
-    public void setUp() {
-        logger.info("Loads the Home page of the website");
-        homePage = new HomePage(EDGE);
-    }
+public class LoginTest extends BaseTest {
 
     /*
     Test Method !!!
@@ -56,12 +41,8 @@ public class LoginTest {
 
         Assert.assertEquals(homePage.goToLoginInPage()
                 .doLoginWith(user.getEmailAddress(), user.getPassword())
-                .getUserName(), "Abhishek Bose");
+                .getUserName(), "Ricky Ponting");
     }
 
-    @AfterMethod
-    public void tearDown() {
-        if (homePage.getDriver() != null)
-            homePage.getDriver().quit();
-    }
+
 }
