@@ -16,8 +16,8 @@ public final class HomePage extends BrowserUtility {
     private final static By SIGN_IN_LINK_LOCATOR = By.className("login");
     Logger logger = LoggerUtility.getLogger(this.getClass());
 
-    public HomePage(Browser browserName) {
-        super(browserName);
+    public HomePage(Browser browserName, boolean isHeadless) {
+        super(browserName,true);
         //goToWebsite(readProperties(QA, "URL"));
         goToWebsite(JSONUtility.readJson(QA).getUrl());
         maximizeWindow();

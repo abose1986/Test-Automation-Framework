@@ -17,7 +17,7 @@ public class BaseTest {
     @BeforeMethod(description = "Load the Homepage of the website")
     public void setUp() {
         logger.info("Loads the Home page of the website");
-        homePage = new HomePage(EDGE);
+        homePage = new HomePage(EDGE, true);
     }
 
     public BrowserUtility getInstance() {
