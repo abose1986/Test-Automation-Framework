@@ -17,15 +17,15 @@ public class LambdaTestUtility {
     public static WebDriver initializeLambdaTestSession(String browser, String testName) {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("browserName", browser);
-        capabilities.setCapability("browserVersion", "127");
+        capabilities.setCapability("browserVersion", "138");
         Map<String, Object> ltOptions = new HashMap<>();
-        ltOptions.put("user", System.getenv("abhi123.bose"));
-        ltOptions.put("accessKey", System.getenv("gxEbfqUBDC0zZPpiajl7finfWgNAarKNIonoRrPXI4hwGpCSLx"));
+        ltOptions.put("user", "abhi123.bose");
+        ltOptions.put("accessKey", "gxEbfqUBDC0zZPpiajl7finfWgNAarKNIonoRrPXI4hwGpCSLx");
         ltOptions.put("build", "Selenium 4");
         ltOptions.put("name", testName);
         ltOptions.put("platformName", "Windows 10");
         ltOptions.put("seCdp", true);
-        ltOptions.put("selenium_version", "4.23.0");
+        ltOptions.put("selenium_version", "4.33.0");
         capabilities.setCapability("LT:Options", ltOptions);
         capabilitiesLocal.set(capabilities);
         WebDriver driver = null;
@@ -35,7 +35,7 @@ public class LambdaTestUtility {
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
-        driverLocal.set(null);
+        driverLocal.set(driver);
         return driverLocal.get();
     }
 

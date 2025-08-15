@@ -1,7 +1,9 @@
 package com.ui.pages;
 
 import com.constants.Browser;
-import com.utility.JSONUtility;
+
+import static com.utility.JSONUtility.*;
+
 import com.utility.LoggerUtility;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -17,14 +19,15 @@ public final class HomePage extends BrowserUtility {
     Logger logger = LoggerUtility.getLogger(this.getClass());
 
     public HomePage(Browser browserName, boolean isHeadless) {
-        super(browserName,true);
+        super(browserName, true);
         //goToWebsite(readProperties(QA, "URL"));
-        goToWebsite(JSONUtility.readJson(QA).getUrl());
+        goToWebsite(readJson(QA).getUrl());
         maximizeWindow();
     }
 
     public HomePage(WebDriver driver) {
         super(driver);
+        goToWebsite(readJson(QA).getUrl());
     }
 
     public LoginPage goToLoginInPage() {
