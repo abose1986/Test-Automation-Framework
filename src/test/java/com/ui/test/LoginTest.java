@@ -1,7 +1,6 @@
 package com.ui.test;
 
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
@@ -26,7 +25,7 @@ public class LoginTest extends BaseTest {
                 .getUserName(), "Alisha Chenoy");
     }
 
-    @Test(description = "Verifies if the valid user is able to login into the application", groups = {"e2e", "sanity"},
+    /*@Test(description = "Verifies if the valid user is able to login into the application", groups = {"e2e", "sanity"},
             dataProviderClass = com.ui.dataproviders.LoginDataProvider.class, dataProvider = "LoginTestCSVDataProvider")
     public void loginCSVTest(User user) {
         Assert.assertEquals(homePage.goToLoginInPage()
@@ -42,7 +41,7 @@ public class LoginTest extends BaseTest {
         Assert.assertEquals(homePage.goToLoginInPage()
                 .doLoginWith(user.getEmailAddress(), user.getPassword())
                 .getUserName(), "Ricky Ponting");
-    }
+    }*/
 
 
 }

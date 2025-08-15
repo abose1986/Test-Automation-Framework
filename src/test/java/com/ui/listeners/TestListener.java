@@ -44,6 +44,7 @@ public class TestListener implements ITestListener {
         String screenshotPath = browserUtility.takesScreenshot(result.getMethod().getMethodName());
         logger.info("Attaching the screenshot to the HTML file.");
         getExtentTest().addScreenCaptureFromPath(screenshotPath);
+
     }
 
     @Override
