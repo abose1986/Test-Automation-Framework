@@ -21,11 +21,14 @@ jobs:
         with:
           java-version: '11'
           distribution: 'temurin'
+
+      - name: Publish
+        run: mvn deploy
+        env:
+          THIS_IS_A_VARIABLE_USERNAME: ${{secrets.username}}
            
       - name: Running Test Automation Framework with Maven
         run: mvn clean test -X -Dbrowser=chrome -DisLambdaTest=true -DisHeadless=false
-        env:
-          THIS_IS_A_VARIABLE_USERNAME: ${{secrets.username}}
 
       - name: Upload Test logs
         if: always()
